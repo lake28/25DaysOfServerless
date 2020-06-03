@@ -1,6 +1,7 @@
 using namespace System.Net
 
 # Input bindings are passed in via param block.
+#
 param($Request, $TriggerMetadata)
 
 
@@ -19,7 +20,7 @@ Write-Host " Added images: $imagesAdded"
 
 ### create a url for image ?
 
-$url = "https://github.com/lake28/25DaysOfServerless/blob/master/day3/images/" + $imagesAdded
+#$url = "https://github.com/lake28/25DaysOfServerless/blob/master/day3/images/" + $imagesAdded
 
 
 
