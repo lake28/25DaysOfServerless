@@ -33,5 +33,5 @@ Write-Output " Added images: $imagesAdded"
 # Associate values to output bindings by calling 'Push-OutputBinding'.
 Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
     StatusCode = $status
-    Body = $body
+    Body = "Thanks!"
 })
