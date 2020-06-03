@@ -14,7 +14,7 @@ Write-Host "PowerShell HTTP trigger function processed a request."
 
 # Interact with query parameters or the body of the request.
 # Got site to test webhooks -- https://webhook.site/
-$imagesAdded = $Request.Body.commits.added | Where-Object {$_ -Like "*.png"}
+$imagesAdded = $Request.Body.commits.added | Where-Object { $_ -Like "*.png" }
 
 Write-Output " Added images: $imagesAdded"
 
@@ -32,6 +32,6 @@ Write-Output " Added images: $imagesAdded"
 
 # Associate values to output bindings by calling 'Push-OutputBinding'.
 Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = "Thanks!"
-})
+        StatusCode = [HttpStatusCode]::OK
+        Body       = "Thanks!"
+    })
