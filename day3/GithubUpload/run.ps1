@@ -14,7 +14,7 @@ Write-Host "PowerShell HTTP trigger function processed a request."
 
 # Interact with query parameters or the body of the request.
 # Got site to test webhooks -- https://webhook.site/
-$imagesAdded = $Request.Body.commits.added | Where-Object $_ -Like "*.png"
+$imagesAdded = $Request.Body.commits.added | Where-Object {$_ -Like "*.png"}
 
 Write-Output " Added images: $imagesAdded"
 
