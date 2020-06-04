@@ -22,6 +22,7 @@ Write-Output " Added images: $imagesAdded"
 
 $url = $githubUrl + $imagesAdded
 
+
 #### save  data to a database, table, queue?
 
 Push-OutputBinding -Name ImageQueue -Value $URL
