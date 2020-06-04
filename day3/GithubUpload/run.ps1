@@ -18,17 +18,22 @@ $imagesAdded = $Request.Body.commits.added | Where-Object { $_ -Like "*.png" }
 
 Write-Output " Added images: $imagesAdded"
 
-### create a url for image ?
+#Check if images has been upload
+if ($imagesAdded -ne 0) {
+    foreach ($addedImages in $imagesAdded) {
+        #create URL
+        $url = $githubUrl + $addedImages
+        #Push to Azure Storage Queue
+        Push-OutputBinding -Name ImageQueue -Value $URL
 
-$url = $githubUrl + $imagesAdded
+        $body = "Thanks image url stored "
+    }
+}
 
-
-#### save  data to a database, table, queue?
-
-Push-OutputBinding -Name ImageQueue -Value $URL
+$body = "No images were found!"
 
 # Associate values to output bindings by calling 'Push-OutputBinding'.
 Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
         StatusCode = [HttpStatusCode]::OK
-        Body       = "Thanks!"
+        Body       = $body
     })
