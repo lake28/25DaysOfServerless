@@ -7,7 +7,7 @@ param($Request, $TriggerMetadata)
 
 #Github URL
 
-$githubUrl = "https://github.com/lake28/25DaysOfServerless/blob/master/day3/images/"
+$githubUrl = "https://github.com/lake28/25DaysOfServerless/blob/master/"
 
 # Write to the Azure Functions log stream.
 Write-Host "PowerShell HTTP trigger function processed a request."
@@ -20,15 +20,11 @@ Write-Output " Added images: $imagesAdded"
 
 ### create a url for image ?
 
-#$url = "https://github.com/lake28/25DaysOfServerless/blob/master/day3/images/" + $imagesAdded
-
-
-
-
+$url = $githubUrl + $imagesAdded
 
 #### save  data to a database, table, queue?
 
-
+Push-OutputBinding -Name ImageQueue -Value $URL
 
 # Associate values to output bindings by calling 'Push-OutputBinding'.
 Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{

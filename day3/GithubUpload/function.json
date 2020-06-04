@@ -10,6 +10,12 @@
         "post"
       ]
     },
+        {
+          "type": "queue",
+          "direction": "out",
+          "name": "ImageQueue",
+          "queueName": "image-queue"
+        },
     {
       "type": "http",
       "direction": "out",
